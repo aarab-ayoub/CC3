@@ -1,0 +1,30 @@
+.div1 {
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    gap: 0px 0px;
+   
+}
+button {
+    background-color: #497fd0; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 10%;
+    padding-left: 5%;
+  }
+.card{
+    border: 1px solid rgb(218, 214, 214);
+    border-radius: 10%;
+    margin: 4%;
+    
+}
+.div2{
+    justify-content: center;
+}
+
