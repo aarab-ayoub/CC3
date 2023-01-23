@@ -12,11 +12,11 @@ function ListUser() {
     }, [dispatch])
 
     return (
-        <div className='div1'>
-            {users && users.map(item => (
-                <User data={item}/>
-            ))}
-        </div>
+        <div className={style.users}>
+        {
+           users && users.map(item=><User data={item} />)
+        }
+    </div>
     )
 }
 export default ListUser;

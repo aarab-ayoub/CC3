@@ -6,10 +6,10 @@ const navigate=useNavigate();
     return (
         <div className='card'>
             <div className='div2'>
-                <img style={{ width: 100 }} src={props.data.image} alt="" />
-                <h1>{props.data.firstName} {props.data.lastName}</h1>
-                <button onClick={()=>navigate(`data/${props.data.id}`)}>detail user</button>
-                <button onClick={()=>navigate(`todo/${props.data.id}`)}>liste des taches </button>
+                <img src={props.data.image} alt="" />
+                <p>{props.data.firstName} {props.data.lastName}</p>
+                <button onClick={()=>navigate(`details/${props.data.id}`)}>Detail User</button>
+                <button onClick={()=>navigate(`taches/${props.data.id}`)}>Liste des taches</button>
             </div>
 
         </div>

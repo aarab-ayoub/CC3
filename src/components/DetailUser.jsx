@@ -1,47 +1,40 @@
-import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
-
-export default function DetailUser() {
-  const { id } = useParams()
-  const { data } = useSelector(state => state.user)
-  const Todo = data.users.filter(user => user.id == id)
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router";
+import { getusers } from "../../redux/UserSlice";
+import style from "./DetailUser.module.css";
+export default function () {
+  const { id } = useParams();
+  const data = useSelector((state) => state.users.data.users);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getusers());
+  }, [dispatch]);
   return (
-    <div>
-      <table border={1} >
-        <thead>
-          <tr>
-            <td>image</td>
-            <td>firstName</td>
-            <td>lastName</td>
-            <td>age</td>
-            <td>email</td>
-            <td>phone</td>
-            <td>birthDate</td>
-            <td>bloodGroup</td>
-            <td>height</td>
-            <td>weight</td>
-            <td>eyeColor</td>
-          </tr>
-        </thead>
-
-        <tbody>
-          {Todo.map(user =>
-            <tr key={user.id}>
-              <td><img style={{ width: 100 }} src={user.images[0]} alt="" /></td>
-              <td>{user.firstName}</td>
-              <td>{user.lastName}</td>
-              <td>{user.age}</td>
-              <td>{user.email}</td>
-              <td>{user.phone}</td>
-              <td>{user.birthDate}</td>
-              <td>{user.bloodGroup}</td>
-              <td>{user.height}</td>
-              <td>{user.weight}</td>
-              <td>{user.eyeColor}</td>
-            </tr>)
-          }
-        </tbody>
-      </table>
+    <div className={style.content}>
+      {data &&
+        data
+          .filter((item) => item.id == id)
+          .map((item) => {
+            return (
+              <div>
+                <img src={item.image} alt="" />
+                <div className={style.detail}>
+                  <p>FirstName :{item.firstName}</p>
+                  <p>LasteeName :{item.lastName}</p>
+                  <p>age :{item.age}</p>
+                  <p>gender :{item.gender}</p>
+                  <p>email :{item.email}</p>
+                  <p>weight :{item.weight}</p>
+                  <p>height:{item.height}</p>
+                  <p>birthDate :{item.birthDate}</p>
+                  <p>bloodGroup :{item.bloodGroup}</p>
+                  <p>eyeColor :{item.eyeColor}</p>
+                </div>
+              </div>
+            );
+          })}
+      <h1></h1>
     </div>
-  )
+  );
 }
